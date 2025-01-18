@@ -1,0 +1,180 @@
+// Mixins
+@mixin header-main {
+  font-family: "Great Vibes", serif;
+  font-weight: 700;
+  font-size: $text-header-sub;
+  text-align: center;
+}
+
+@mixin flip-colors {
+  background-color: $color-main;
+  color: $color-background;
+}
+
+@mixin highlight-colors {
+  background-color: $color-accent;
+  color: $color-background;
+}
+
+@mixin flex-box-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-box-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+// Animation - Home Logo
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.5) translateY(200px); /* Start small and below */
+    opacity: 0; /* Start invisible */
+  }
+  50% {
+    transform: scale(1.2) translateY(-40px); /* Overshoot bounce */
+    opacity: 1; /* Fully visible */
+  }
+  70% {
+    transform: scale(0.95) translateY(10px); /* Bounce back down */
+  }
+  100% {
+    transform: scale(1) translateY(0); /* Final position */
+    opacity: 1; /* Fully visible */
+  }
+}
+
+#home-logo {
+  opacity: 0; /* Hidden by default */
+  transform: scale(0.5) translateY(200px); /* Start small and below */
+  transition: opacity 0.3s ease, transform 1s ease; /* Smooth transitions */
+}
+
+#home-logo.animate {
+  animation: bounceIn 0.85s ease-out forwards; /* Improved bounce animation */
+}
+
+// Animation - Expertise
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%); /* Start off-screen to the right */
+    opacity: 0; /* Make it invisible initially */
+  }
+  to {
+    transform: translateX(0); /* End in the original position */
+    opacity: 1; /* Fully visible */
+  }
+}
+.expertise__list--index {
+  opacity: 0; /* Start hidden */
+  transform: translateX(100%); /* Positioned off-screen to the right */
+}
+
+.expertise__list--index:nth-child(1) {
+  animation-delay: 0.2s; /* No delay for the first item */
+}
+.expertise__list--index:nth-child(2) {
+  animation-delay: 0.4s; /* 0.2s delay for the second item */
+}
+.expertise__list--index:nth-child(3) {
+  animation-delay: 0.6s; /* 0.4s delay for the third item */
+}
+.expertise__list--index:nth-child(4) {
+  animation-delay: 0.8s; /* 0.6s delay for the fourth item */
+}
+.expertise__list--index:nth-child(5) {
+  animation-delay: 1s; /* 0.8s delay for the fifth item */
+}
+
+.features__box--card {
+  perspective: 1000px; /* Enable 3D perspective */
+}
+
+// Fixed Icon (WhatsApp)
+#box {
+  position: relative;
+}
+
+.whatsapp {
+  position: fixed;
+  bottom: $space-sub;
+  right: $space-sub;
+  padding: $space-supersmall;
+  border-radius: 50%;
+  background-color: rgba($color-alert, 0.75);
+  background-color: rgba($color-whatsapp, 0.65);
+  box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+  height: $space-widegap;
+  width: $space-widegap;
+  @include flex-box-row;
+  z-index: 6;
+  opacity: 0;
+  visibility: hidden;
+
+  &:active {
+    background-color: rgba($color-whatsapp, 1);
+  }
+
+  &__icon {
+    color: $color-background;
+    font-size: $text-big;
+  }
+}
+
+.whatsapp.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+// Spinner
+/* Overlay that covers the entire screen */
+#loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.8
+  ); /* White with slight transparency */
+  backdrop-filter: blur(5px); /* Blurred background */
+  z-index: 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Spinner animation */
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid #493248; /* Your theme color */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Spin effect */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Hide the overlay after loading */
+#loading-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}

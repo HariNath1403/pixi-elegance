@@ -1,0 +1,88 @@
+.footer {
+  padding: $space-decent $space-supersmall;
+  background-color: $color-main;
+  color: $color-background;
+
+  &__header {
+    @include header-main;
+    font-size: $text-big;
+  }
+
+  &__parts {
+    margin-top: $space-gap;
+    display: grid;
+    grid-template-columns: 2fr 1.25fr;
+    align-items: center;
+  }
+
+  &__contacts {
+    padding: $space-small 0;
+  }
+
+  &__list {
+    @include flex-box-col;
+    gap: $space-supersmall;
+    font-size: calc(#{$text-mini + $text-supersmall}/ 2);
+    list-style: none;
+    justify-content: flex-start;
+    align-items: flex-start;
+    justify-items: flex-start;
+    padding-left: $space-supersmall;
+
+    &--index {
+      @include flex-box-row;
+      width: 100%;
+      justify-content: flex-start;
+      justify-items: center;
+      align-items: center;
+    }
+
+    &--icon {
+      font-size: $text-small;
+      width: $space-standard;
+      text-align: center;
+    }
+
+    &--link {
+      color: $color-white !important;
+    }
+
+    &--link,
+    &--text {
+      color: $color-background;
+      display: inline-block;
+      flex: 1;
+    }
+  }
+
+  &__expertise {
+    &--list {
+      margin-top: $space-small;
+
+      @include flex-box-row;
+      justify-content: space-around;
+      list-style: none;
+      gap: $space-mini;
+      padding-left: $space-supersmall;
+
+      &--img {
+        height: $space-sub;
+        width: auto;
+      }
+    }
+  }
+
+  &__logo {
+    width: 100%;
+
+    &--img {
+      width: 100%;
+      // padding: $space-mini;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+}

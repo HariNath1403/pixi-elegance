@@ -1,0 +1,114 @@
+.product {
+  margin: $space-margin 0 0 0;
+  padding: $space-margin 0;
+  @include flip-colors;
+
+  &__header {
+    @include header-main;
+  }
+
+  &__table {
+    margin-top: $space-margin;
+    @include flex-box-col;
+    gap: $space-standard;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 1.25fr 2fr;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  &__box {
+    @include flex-box-col;
+
+    &--img {
+      width: 75%;
+      position: relative;
+
+      &--pic {
+        width: 100%;
+        height: auto;
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.15);
+      }
+
+      &--link {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba($color-background, 0.75);
+        z-index: 2;
+        text-decoration: none;
+      }
+
+      &--num {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: $space-margin;
+        height: auto;
+        z-index: 3;
+      }
+    }
+  }
+
+  &__details {
+    @include flex-box-col;
+    gap: $space-mini;
+    align-items: flex-start;
+    font-size: calc(#{$text-mini + $text-small}/ 2);
+
+    &--price {
+      @include flex-box-row;
+      justify-content: flex-start;
+      gap: $space-mini;
+
+      &--value {
+        @include header-main;
+        font-size: $text-emphasize;
+      }
+    }
+
+    &--name {
+      @include flex-box-row;
+      justify-content: flex-start;
+      gap: $space-supersmall;
+
+      &--value {
+        @include header-main;
+        font-size: $text-standard;
+      }
+    }
+
+    &--features {
+      @include flex-box-col;
+      justify-content: flex-start;
+      align-items: flex-start;
+      gap: $space-supersmall;
+
+      &--list {
+        @include flex-box-row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        column-gap: $space-small;
+        row-gap: $space-mini;
+        width: 90%;
+        flex-wrap: wrap;
+        list-style: none;
+        padding-left: $space-mini;
+        margin-top: $space-supersmall;
+        // text-transform: uppercase;
+      }
+
+      &--value {
+        padding: calc(#{$space-supersmall}/ 2) $space-supersmall;
+        font-weight: 600;
+        color: $color-main;
+        background-color: $color-background;
+      }
+    }
+  }
+}

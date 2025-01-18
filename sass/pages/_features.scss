@@ -1,0 +1,144 @@
+.features {
+  margin: 0;
+
+  &__header {
+    @include header-main;
+  }
+
+  &__box {
+    padding: $space-sub $space-small;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $space-mini;
+
+    &--card {
+      position: relative;
+      width: 16rem;
+      height: 35rem;
+      perspective: 1000px;
+    }
+
+    &--inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.75s ease;
+      transform-style: preserve-3d;
+    }
+
+    &--front,
+    &--back {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 9px;
+      font-style: italic;
+      text-align: center;
+    }
+
+    &--front {
+      @include flip-colors;
+      transform: rotateY(0);
+
+      &--icon {
+        font-size: $text-emphasize;
+      }
+
+      &--header {
+        margin-top: $space-small;
+        font-size: $text-standard;
+      }
+
+      &--txt {
+        margin-top: $space-sub;
+        font-size: calc(#{$text-supersmall + $text-mini}/ 2);
+      }
+    }
+
+    &--back {
+      background-color: $color-accent;
+      color: $color-background;
+      transform: rotateY(180deg);
+
+      &--icon {
+        font-size: $text-standard;
+        color: $color-background;
+      }
+
+      &--header {
+        font-size: $text-small;
+        margin-top: $space-small;
+        line-height: 1.4;
+      }
+
+      &--txt {
+        font-size: $text-supersmall;
+        line-height: 1.8;
+        margin-top: $space-small;
+      }
+    }
+  }
+}
+
+.features__box--card:hover .features__box--inner {
+  transform: rotateY(180deg);
+}
+
+.video {
+  background-color: $color-background;
+  background-color: $color-main;
+  color: $color-background;
+  padding: $space-gap 0 $space-margin;
+  // height: 150vh;
+
+  &__header {
+    @include header-main;
+    font-size: $text-emphasize;
+    padding: $space-gap 0;
+  }
+
+  &__box {
+    height: 85vh;
+    width: 100%;
+    overflow: hidden;
+    padding: $space-small 0;
+
+    video {
+      height: 100%;
+      width: auto;
+      object-fit: cover;
+      transform: translateX(-21.5%);
+      // position: relative;
+
+      // &::before {
+      //   content: "";
+      //   position: absolute;
+      //   top: 0;
+      //   left: 0;
+      //   height: 100%;
+      //   width: 100%;
+      //   z-index: 5;
+      //   background-color: rgba($color-main, 0.4); /* Corrected */
+      //   pointer-events: none;
+      // }
+    }
+  }
+
+  &__story {
+    margin: $space-standard $space-small;
+
+    &--txt {
+      @include header-main;
+      font-size: calc(#{$text-mini + $text-small}/ 2);
+      font-size: $text-mini;
+      line-height: 1.6;
+    }
+  }
+}

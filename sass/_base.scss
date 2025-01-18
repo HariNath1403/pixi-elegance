@@ -1,0 +1,30 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Lato", serif;
+  // font-weight: 400;
+  font-weight: 500;
+  font-size: $text-standard;
+  line-height: 1.6;
+  background-color: beige;
+  // background-color: $color-tint;
+  color: $color-main;
+}
+
+.box {
+  max-width: $max-width;
+  overflow-x: hidden;
+  margin: 0 auto;
+  background-color: $color-background;
+}
