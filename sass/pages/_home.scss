@@ -20,11 +20,12 @@
     &--tagline {
       @include flip-colors;
       margin-top: $space-small;
-      font-size: $text-supersmall;
-      letter-spacing: 1.35px;
+      font-size: calc(#{$text-supersmall + $text-mini}/ 2);
+      letter-spacing: 1.5px;
       font-weight: 300;
       text-transform: uppercase;
-      padding: $space-mini 0;
+      padding: $space-mini $space-supersmall;
+      line-height: 1.85;
     }
 
     &--description {

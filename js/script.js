@@ -37,29 +37,6 @@ observer.observe(expertiseSection);
 
 // Video scrolling Effect
 /*
-const videoBox = document.getElementById("video");
-const video = document.querySelector(".video__box--video");
-let lastScrollTop = 0;
-
-window.addEventListener("scroll", () => {
-  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-  const direction = scrollTop > lastScrollTop ? 1 : -1; // 1 for down, -1 for up
-
-  // Adjust the speed multiplier as needed
-  const speed = 0.075;
-  // const speed = 0.1;
-
-  // Update video currentTime based on scroll direction
-  video.currentTime += speed * direction;
-
-  // Prevent video from going out of bounds
-  if (video.currentTime < 0) video.currentTime = 0;
-  if (video.currentTime > video.duration) video.currentTime = video.duration;
-
-  lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For mobile or negative scrolling
-});
-*/
-
 const loadingOverlay = document.getElementById("loading-overlay");
 const video = document.querySelector(".video__box--video");
 const videoBox = document.getElementById("video");
@@ -96,6 +73,7 @@ window.addEventListener("scroll", () => {
 
   lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
 });
+*/
 
 // Parallax Scrolling
 const customPage = document.getElementById("custom");
@@ -105,7 +83,7 @@ const tableCells = document.querySelectorAll(
 );
 const footer = document.getElementById("footer");
 
-const bufferSpace = 450; // Space before the footer where the bar should disappear
+const bufferSpace = 450;
 
 window.addEventListener("scroll", function () {
   const customRect = customPage.getBoundingClientRect();
@@ -113,7 +91,6 @@ window.addEventListener("scroll", function () {
 
   const scrollY = window.scrollY - customPage.offsetTop;
 
-  // Check if the bar is within the custom section and not near the footer
   if (
     customRect.top < window.innerHeight &&
     customRect.bottom > 0 &&
@@ -124,7 +101,6 @@ window.addEventListener("scroll", function () {
       scrollY * 0.3
     }px) rotate(-7.5deg)`;
 
-    // Check overlap with table cells
     const barRect = parallaxBar.getBoundingClientRect();
 
     tableCells.forEach((cell) => {
@@ -139,17 +115,15 @@ window.addEventListener("scroll", function () {
       }
     });
   } else if (footerRect.top <= window.innerHeight - bufferSpace) {
-    // Animate the bar downwards when reaching the footer
     parallaxBar.style.opacity = "0";
     parallaxBar.style.transform = `translateY(${
       scrollY * 0.3 + 100
-    }px) rotate(-7.5deg)`; // Slide down
+    }px) rotate(-7.5deg)`;
   } else {
-    // Animate the bar upwards when scrolling above the custom section
     parallaxBar.style.opacity = "0";
     parallaxBar.style.transform = `translateY(${
       scrollY * 0.3 - 100
-    }px) rotate(-7.5deg)`; // Slide up
+    }px) rotate(-7.5deg)`;
   }
 });
 
@@ -163,7 +137,6 @@ const toggleNav = () => {
   navBtn.classList.toggle("is-active");
   navPage.classList.toggle("is-active");
 
-  // Disable/enable scrolling on body
   if (navPage.classList.contains("is-active")) {
     body.classList.add("no-scroll");
   } else {
@@ -171,13 +144,10 @@ const toggleNav = () => {
   }
 };
 
-// Event listener for the button click
 navBtn.addEventListener("click", toggleNav);
 
-// Event listener for each link click
 navLinks.forEach((link) => {
   link.addEventListener("click", () => {
-    // Close the navigation and re-enable scrolling
     if (navPage.classList.contains("is-active")) {
       toggleNav();
     }

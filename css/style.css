@@ -277,11 +277,12 @@ body {
       background-color: #493248;
       color: #fae4ce;
       margin-top: 1.8rem;
-      font-size: 1.2rem;
-      letter-spacing: 1.35px;
+      font-size: calc(2.8rem/ 2);
+      letter-spacing: 1.5px;
       font-weight: 300;
       text-transform: uppercase;
-      padding: 1.2rem 0; }
+      padding: 1.2rem 0.6rem;
+      line-height: 1.85; }
     .home__header--description {
       margin-top: 3.6rem;
       font-size: calc(2.8rem/ 2);
