@@ -691,6 +691,7 @@ body {
   width: 125%;
   height: 50px;
   background: linear-gradient(135deg, rgba(178, 58, 72, 0.8), rgba(230, 149, 34, 0.5));
+  opacity: 0;
   transform: rotate(-7.5deg);
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
   z-index: 1;

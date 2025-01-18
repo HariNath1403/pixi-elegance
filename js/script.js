@@ -36,6 +36,7 @@ const observer = new IntersectionObserver(
 observer.observe(expertiseSection);
 
 // Video scrolling Effect
+/*
 const videoBox = document.getElementById("video");
 const video = document.querySelector(".video__box--video");
 let lastScrollTop = 0;
@@ -56,6 +57,44 @@ window.addEventListener("scroll", () => {
   if (video.currentTime > video.duration) video.currentTime = video.duration;
 
   lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For mobile or negative scrolling
+});
+*/
+
+const loadingOverlay = document.getElementById("loading-overlay");
+const video = document.querySelector(".video__box--video");
+const videoBox = document.getElementById("video");
+let lastScrollTop = 0;
+
+// Wait for both the video and the entire page to load
+function checkIfReady() {
+  if (video.readyState >= 4 && document.readyState === "complete") {
+    loadingOverlay.classList.add("hidden");
+  }
+}
+
+// Listen for full page load
+window.addEventListener("load", checkIfReady);
+
+// Listen for the video to fully buffer
+video.addEventListener("canplaythrough", checkIfReady);
+
+// Video scroll effect
+window.addEventListener("scroll", () => {
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  const direction = scrollTop > lastScrollTop ? 1 : -1; // 1 for down, -1 for up
+
+  // const speed = 0.075;
+  const speed = 0.75;
+
+  // Only update video if it's fully loaded
+  if (video.readyState >= 4) {
+    video.currentTime += speed * direction;
+
+    if (video.currentTime < 0) video.currentTime = 0;
+    if (video.currentTime > video.duration) video.currentTime = video.duration;
+  }
+
+  lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
 });
 
 // Parallax Scrolling
